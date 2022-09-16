@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Button} from "react-native";
+import { Platform, StyleSheet, Text, View, Button } from "react-native";
 
 import PictureList from "./app/components/PictureList";
 import CameraDialog from "./app/components/CameraDialog";
@@ -7,22 +7,27 @@ import CameraDialog from "./app/components/CameraDialog";
 export default class App extends Component {
 
   state = {
-    PictureList: [
-      
-      {id: '1', url: 'https://th.bing.com/th/id/R.9c1cdb0adcf6b9ed186c9fb82e0cde25?rik=vb1l%2bgMv1i1u%2bg&riu=http%3a%2f%2fimages3.memedroid.com%2fimages%2fUPLOADED405%2f5d425bfb1cc2a.jpeg&ehk=nMMzv093kd0dqIjkSHlLvoalbuxBT3cHptofRUzHxRg%3d&risl=&pid=ImgRaw&r=0'},
-      {id: '2', url: 'https://th.bing.com/th/id/R.9c1cdb0adcf6b9ed186c9fb82e0cde25?rik=vb1l%2bgMv1i1u%2bg&riu=http%3a%2f%2fimages3.memedroid.com%2fimages%2fUPLOADED405%2f5d425bfb1cc2a.jpeg&ehk=nMMzv093kd0dqIjkSHlLvoalbuxBT3cHptofRUzHxRg%3d&risl=&pid=ImgRaw&r=0'},
-      {id: '3', url: 'https://th.bing.com/th/id/R.9c1cdb0adcf6b9ed186c9fb82e0cde25?rik=vb1l%2bgMv1i1u%2bg&riu=http%3a%2f%2fimages3.memedroid.com%2fimages%2fUPLOADED405%2f5d425bfb1cc2a.jpeg&ehk=nMMzv093kd0dqIjkSHlLvoalbuxBT3cHptofRUzHxRg%3d&risl=&pid=ImgRaw&r=0'},
-      {id: '4', url: 'https://th.bing.com/th/id/R.9c1cdb0adcf6b9ed186c9fb82e0cde25?rik=vb1l%2bgMv1i1u%2bg&riu=http%3a%2f%2fimages3.memedroid.com%2fimages%2fUPLOADED405%2f5d425bfb1cc2a.jpeg&ehk=nMMzv093kd0dqIjkSHlLvoalbuxBT3cHptofRUzHxRg%3d&risl=&pid=ImgRaw&r=0'},
-    ],
+    PictureList:
+      [
+        { id: '1', url: 'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png' },
+        { id: '2', url: 'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png' },
+        { id: '3', url: 'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png' },
+        { id: '4', url: 'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png' },
+
+      ],
     isModalOpen: false
   }
-  
+
   onPictureSelect = (item) => {
-    
+
   }
 
   openModal = () => {
+    this.setState({ isModalOpen: true })
+  }
 
+  closeModal = (response) => {
+    this.setState({ isModalOpen: false });
   }
 
   render() {
@@ -30,32 +35,32 @@ export default class App extends Component {
     const { state } = this;
 
     return (
-      <View style={StyleSheet.container}>
-        <PictureList list={state.PictureList} onClick={this.onPictureSelect}/>
+      <View style={styles.container}>
+        <PictureList list={state.PictureList} onClick={this.onPictureSelect} />
         <View style={styles.footer}>
-          <Button 
+          <Button
             onPress={this.openModal}
             title="Nova Foto"
             color="#00062ac"
-            />
+          />
         </View>
-        <CameraDialog isOpen={state.isModalOpen}/>
+        <CameraDialog isOpen={state.isModalOpen} onClose={this.closeModal} />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create ({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F%FCFF',
-    },
-    footer: {
-      padding: 15,
-      backgroundColor: '#999',
-      width: '100%',
-      textAlign: 'center',
-    },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F%FCFF',
+  },
+  footer: {
+    padding: 15,
+    backgroundColor: '#999',
+    width: '100%',
+    textAlign: 'center'
+  },
 });

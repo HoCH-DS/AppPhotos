@@ -25,6 +25,7 @@ class PictureList extends Component {
                     data={props.list} 
                     keyExtractor={keyExtractor}
                     renderItem={({item}) => <PictureListItem onClick={props.onClick} item={item} />}
+                    
                 />
 
            </View>
@@ -33,7 +34,7 @@ class PictureList extends Component {
 
 }
 
-function PictureListItem(Props){
+function PictureListItem(props){
 
     const { item } = props;
     
@@ -42,7 +43,7 @@ function PictureListItem(Props){
 
             <Image source={{uri: item.url}} 
             
-                style={{ width: 80, height: 80 }}
+                style={{ width: 100, height: 100, margin: 10 }}
             />
 
         </TouchableHighlight>
